@@ -1,22 +1,32 @@
 ```mermaid
 flowchart TD
-A[Input: User preferences from UserProfile]
-B[Input: Songs loaded from songs.csv]
-C[Process: Loop through each song]
-D[Process: Compare song to user profile using scoring recipe]
-E[Process: Assign score based on mood, energy, genre, acousticness, tempo_bpm]
-F[Process: Store scored song]
-G[Output: Sort songs by score highest to lowest]
-H[Output: Return top K recommendations]
-I[Return top K recommendations]
+    A[Input: Genre + Mood + Number of Songs]
+    B[Load songs from songs.csv]
+    C[Validate request]
+    D[Filter songs by exact genre and mood]
+    E{Enough songs available?}
+    F[Return guardrail message]
+    G[Select and add first song to playlist]
+    H[Score remaining candidates using Camelot compatibility, BPM closeness, energy, and valence]
+    I[Choose best next song]
+    J[Add selected song to playlist]
+    K{Playlist complete?}
+    L[Generate transition explanations]
+    M[Export playlist to CSV]
+    N[Display final playlist output]
 
     A --> C
-    B --> C
+    B --> D
     C --> D
     D --> E
-    E --> F
-    F --> G
-    G -->|Yes| C
-    G -->|No| H
+    E -- No --> F
+    E -- Yes --> G
+    G --> H
     H --> I
+    I --> J
+    J --> K
+    K -- No --> H
+    K -- Yes --> L
+    L --> M
+    M --> N
 ```

@@ -1,21 +1,148 @@
-id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness,popularity,release_decade,mood_tag,instrumentalness,explicit
-1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18,78,2020s,euphoric,0.04,False
-2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71,55,2020s,dreamy,0.72,False
-3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10,65,2010s,aggressive,0.05,False
-4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86,48,2020s,dreamy,0.81,False
-5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05,82,2020s,euphoric,0.02,False
-6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92,42,2010s,dreamy,0.88,False
-7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89,51,2010s,nostalgic,0.45,False
-8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22,67,2020s,nostalgic,0.32,False
-9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78,53,2020s,dreamy,0.75,False
-10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35,71,2010s,euphoric,0.08,False
-11,Electric Heat,Synth Force,electronic,energetic,0.87,138,0.68,0.89,0.06,74,2020s,euphoric,0.38,False
-12,Basement Cipher,MC Flow,hip-hop,groovy,0.72,105,0.65,0.81,0.08,76,2010s,rebellious,0.06,True
-13,Velvet Soul,Diana Smooth,soul,romantic,0.54,88,0.76,0.59,0.48,60,2000s,melodic,0.12,False
-14,Desert Roads,Country Soul,country,melancholic,0.46,112,0.38,0.42,0.82,44,2010s,nostalgic,0.10,False
-15,Dawn Meditation,Violin Essence,classical,contemplative,0.29,65,0.62,0.12,0.93,38,2010s,melodic,0.95,False
-16,Metal Thunder,Iron Reign,metal,intense,0.96,160,0.25,0.48,0.04,63,2010s,aggressive,0.08,False
-17,Island Reggae,Tropical Vibes,reggae,relaxed,0.55,98,0.74,0.68,0.77,57,2000s,melodic,0.18,False
-18,Blues in Minor,Midnight Blues,blues,melancholic,0.41,84,0.39,0.51,0.86,45,1990s,nostalgic,0.22,False
-19,Neon Dark,Glitch Code,electronic,dark,0.84,135,0.28,0.77,0.05,69,2020s,aggressive,0.42,False
-20,Mountain Folk,Acoustic Heart,folk,uplifting,0.62,102,0.78,0.64,0.88,49,2010s,melodic,0.35,False
+song_id,title,artist,genre,mood_tag,bpm,musical_key,camelot_key,energy,valence
+1,Till I Collapse,Eminem,Rap,Workout,171,C# Major,3B,9,4
+2,Stronger,Kanye West,Rap,Workout,111,G Major,9B,8,6
+3,Lucky You,"Eminem, Joyner Lucas",Rap,Workout,153,A# Minor,3A,9,5
+4,ISIS,"Joyner Lucas, Logic",Rap,Workout,120,C# Major,3B,8,4
+5,Standard,Stormzy,Rap,Workout,140,A Major,11B,8,5
+6,Je M'appelle,Benzz,Rap,Workout,141,B Major,1B,8,5
+7,King's Dead,"Jay Rock, Kendrick Lamar, Future",Rap,Workout,82,C# Major,3B,8,3
+8,Ni**as In Paris,"JAY-Z, Kanye West",Rap,Workout,140,C# Major,3B,9,5
+9,A Milli,Lil Wayne,Rap,Workout,152,F# Minor,11A,9,6
+10,Look Alive,"BlocBoy JB, Drake",Rap,Workout,140,Bb Major,6B,8,5
+11,Keep Going,"DJ Khalid, Lil Durk, 21 Savage, Roddy Ricch",Rap,Workout,151,B Minor,10A,9,6
+12,Behind Bars,Drake,Rap,Workout,142,Ab Major,4B,7,4
+13,Come & Go,"Juice Wrld, Marshmello",Rap,Workout,145,C Major,8B,8,6
+14,Who's Stopping Me,"Big Sean, Metro Boomin",Rap,Workout,100,G Major,9B,7,5
+15,Lotto,Joyner Lucas,Rap,Workout,130,Ab Major,4B,8,6
+16,Roll in Peace,"Kodak Black, XXXTENTACION",Rap,Workout,140,A# Minor,3A,8,4
+17,Girls Love Rod Wave,Scorey,Rap,Vibe,85,F Minor,4A,4,4
+18,Enjoy Yourself,"Pop Smoke, KAROL G",Rap,Vibe,97,B Minor,10A,6,7
+19,Who Needs Love,Tory Lanez,Rap,Vibe,102,G Major,9B,5,4
+20,Lean Wit Me,Juice Wrld,Rap,Vibe,164,C# Major,3B,7,3
+21,Legend,Drake,Rap,Vibe,100,C# Major,3B,5,5
+22,Santified,"Rick Ross, Kanye West, Big Sean",Rap,Vibe,126,A Major,11B,6,5
+23,Whoa (mind in awe),XXXTENTACION,Rap,Vibe,160,F# Minor,11A,4,4
+24,The Color Violet,Tory Lanez,Rap,Vibe,105,F# Minor,11A,5,4
+25,616 Red Lipstick,Speed Gang,Rap,Vibe,105,G# Minor,1A,5,5
+26,Anxiety,"Sleepy Hallow, Doechii",Rap,Vibe,129,C Major,8B,5,3
+27,Professor X,Dave,Rap,Vibe,127,D Major,10B,6,5
+28,More Money,Meekz,Rap,Vibe,91,Ab Major,4B,5,4
+29,Bad N Bouj,Hp Boyz,Rap,Vibe,140,C# Major,3B,7,6
+30,No Good,Juice Wrld,Rap,Vibe,170,F Major,7B,6,3
+31,Sauce!,XXXTENTACION,Rap,Vibe,135,D# Minor,2A,6,4
+32,Spotlight,"Marshmello, Lil Peep",Rap,Vibe,150,G Major,9B,6,5
+33,"Hold On, We're Going Home","Drake, Majid Jordan",Rap,Chill,100,F# Minor,11A,3,6
+34,Teenage Fever,Drake,Rap,Chill ,97,G# Minor,1A,3,5
+35,Yosemite,Travis Scott,Rap,Chill,128,C Major,8B,4,5
+36,Exchange,Bryson Tiller,Rap,Chill,160,F# Major,2B,4,4
+37,What They Want,Russ,Rap,Chill,140,C# Minor,12A,4,5
+38,Marceline,Lil God Dan,Rap,Chill,124,D# Minor,2A,3,4
+39,Flaws N Sins,Juice Wrld,Rap,Chill,150,Ab Major,4B,4,4
+40,Niagara Falls (Foot or 2),"Metro Boomin, Travis Scott, 21 Savage",Rap,Chill,88,D Major,10B,4,4
+41,You're Mines Still,"Yung Bleu, Lil Baby",Rap ,Chill,82,F Minor,4A,3,5
+42,In My Head,Juice Wrld,Rap ,Chill,160,F Minor,4A,4,4
+43,ZEZE,"Kodak Black, Travis Scott",Rap,Chill,98,G# Minor,1A,4,6
+44,I Don't Wanna Do This Anymore,XXXTENTACION,Rap,Chill,114,E Major,12B,2,2
+45,Up Up And Away,Juice Wrld,Rap,Chill,75,E Minor,9A,3,6
+46,Y.G.M.,Junes UB,Rap,Chill,140,D Minor,7A,3,4
+47,Luv Is Art,"A Boogie Wit da Hoodie, Lil Uzi Vert",Rap,Chill,87,D Major,10B,3,5
+48,HATE 2 LUV U,Young Cardi,Rap,Chill,165,A Major,11B,4,3
+,,,,,,,,,
+49,So What,"Mqx, ilysmoke",EDM,Workout,160,F# Major,2B,8,7
+50,Roeses - Imanbek Remix,"SAINt JHN, Imanbek",EDM,Workout,122,Ab Major,4B,9,8
+51,This War Is Mine - Clown Remix,Escape The Fate,EDM,Workout,188,E Minor,9A,9,4
+52,Victory Lap Five,Fred Again...,EDM,Workout,140,Ab Major,4B,8,7
+53,Stereo Love,Techno King,EDM,Workout,145,E Major,12B,8,8
+54,Kiss Me Again,"Jiyagi, Septum, Frozen Frog",EDM,Workout,180,C# Minor,12A,9,8
+55,Freak in me,"FOVOS, Loosie Grind",EDM,Workout,155,F# Major,2B,9,8
+56,Hey Baby (Drop It to the Floor),"Fyez, HYPER DEMON, Mr Demon",EDM,Workout,154,A Major,11B,9,9
+57,Look at Me Now,"BEAUZ,JKRS",EDM,Workout,154,A Major,11B,8,8
+58,Around the World(La La La La La),"HITAK, TECHNO KING",EDM,Workout,160,A Minor,8A,9,8
+59,APT,"RICZA, TECHNO KING",EDM,Workout,150,F# Minor,11A,8,7
+60,Panda,"TECHNO KING, ELEX, Hyperpalme",EDM,Workout,143,B Major,1B,9,8
+61,I Can Walk On Water,Basshunter,EDM,Workout,140,A Major,11B,8,6
+62,Typa Girl,southstar,EDM,Workout,150,C# Major,3B,8,8
+63,I Fink U Freeky,Die Antwoord,EDM,Workout,130,F# Major,2B,5,5
+64,Let Me Hold You (Turn Me On),"Dante Klein, Cheat Code",EDM,Workout,103,C# Minor,12A,4,5
+65,ten,"Fred Again...,Jozzy",EDM,Chill,128,B Minor,10A,4,5
+66,Shy Girl,Kedam,EDM,Chill,113,B Major,1B,4,5
+67,red,ANDREWBATES,EDM,Chill,120,F Minor,4A,3,4
+68,Chill,Slushii,EDM,Chill,124,A Major,11B,4,5
+69,Oh Devil,Electric Guest,EDM,Chill,97,G Minor,6A,5,6
+70,BIRDS OF A FEATHER,"New Beat Order, Yellow Pvnk, Mr Demon",EDM,Chill,160,Bb Major,6B,5,7
+71,Bad Habits,"midnight Berlin, 9Lives, TECHNO KING",EDM,Chill,164,B Minor,10A,5,6
+72,River Flows In You,"Neptunica, Jasper Forks, Alex Christensen",EDM,Chill,170,A Major,11B,4,5
+73,Be Your Sound,"Cosmic Gate, Emma Hewitt",EDM,Chill,132,G Major,9B,4,5
+74,Hide & Seek - Tiesto Remix,"Imogen Heap, Tiesto",EDM,Chill,130,F# Minor,11A,5,6
+75,Run,"Lane 8, Kasablanca",EDM,Chill,124,F Major,7B,5,7
+76,On A Good Day,OceanLab,EDM,Chill,136,F# Major,2B,4,6
+77,Ocean Drive,Duke Dumont,EDM,Chill,115,G# Minor,1A,4,6
+78,No Place - Will Clarke Remix,"RUFUS DU SOL, Will Clarke",EDM,Chill,125,B Minor,10A,4,5
+79,Faded,ZHU,EDM,Chill,125,A Minor,8A,5,6
+80,Rollin,"Calvin Harris, Future, Khalid, Funk Wav",EDM,Chill,92,F# Minor,11A,3,5
+81,What You Hiding?,YouNotUs,EDM,Vibe,135,A# Minor,3A,6,7
+82,Promises,BOVOSKI,EDM,Vibe,154,C# Major,3B,7,8
+83,Ocean Avenue,"Fairlane, Ryan Scott Graham",EDM,Vibe,170,C Major,8B,7,8
+84,L'Amour Toujours,"Lawstylez, Techno King, M-T3CK",EDM,Vibe,150,D Major,10B,8,9
+85,ecstacy (slowed),SUICIDAL-IDOL,EDM,Vibe,106,D Major,10B,5,5
+86,Genie In A Bottle,"MAJED, Z3LLA",EDM,Vibe,140,C Major,8B,7,8
+87,Paparazzi,"Gang Speed, Emilio",EDM,Vibe,138,Ab Major,4B,7,8
+88,Everytime We Touch,"Lawstylez, Techno King, STROWBERRY",EDM ,Vibe,150,C# Major,3B,8,9
+89,Believe,"ELMY, Boostereo, TECHNO KING",EDM,Vibe,150,C# Major,3B,7,8
+90,What Am I Doing Here? Pt.2,"Chicane, Walsh & Mcauley",EDM,Vibe,132,D# Minor,2A,6,7
+91,Till The Sky Falls Down,Vibe,EDM,Vibe,132,D# Minor,2A,6,7
+92,Waiting For The Night,"Armin van Buuren, Fiora",EDM,Vibe,130,C# Major,3B,6,7
+93,Freaking Out,A R I Z O N A,EDM,Vibe,125,F# Major,2B,7,8
+94,Call On Me,Eric Prydz,EDM,Vibe,126,Bb Major,6B,7,8
+95,Sun And Moon,Above & Beyond,EDM,Vibe,134,F# Minor,11A,7,8
+96,Steal You Away,"Dash Berlin, Michael Brun, Alexander Popov",EDM,Vibe,128,F# Major,2B,6,7
+97,Alors On Danse,"Stromae, Kanye West",EDM,Vibe,120,C# Minor,12A,7,8
+,,,,,,,,,
+98,She Doesn't Mind,Sean Paul,Pop,Vibe,120,G Minor,6A,7,8
+99,A Bar Song (Tipsy),Shaboozey,Pop,Vibe,81,A Major,11B,7,9
+100,Cliche,MGK,Pop,Vibe,105,D Major,10B,5,6
+101,MEMORIES!,347aidan,Pop,Vibe,155,A Major,11B,6,7
+102,Desert Rose,"Sting, Cheb Mami",Pop,Vibe,112,C Minor,5A,6,7
+103,Into You,Ariana Grande,Pop,Vibe,108,A Major,11B,7,8
+104,Maps,Maroon 5,Pop,Vibe,120,C# Minor,12A,7,8
+105,Waiting for Tonight,Jennifer Lopez,Pop,Vibe,125,A# Minor,3A,7,8
+106,California ,Anthony Russo,Pop,Vibe,142,Bb Major,6B,6,7
+107,Broken,"THEY., Jessie Reyez",Pop,Vibe,132,A Major,11B,5,5
+108,Tokyo Narita-Freestyle,"Halsey, Lido",Pop,Vibe,76,F Minor,4A,5,6
+109,2002,Anne- Marie,Pop,Vibe,96,C# Minor,12A,6,8
+110,Don't Blame Me,Taylor Swift,Pop,Vibe,136,A Minor,8A,6,6
+111,Replay,Iyaz,Pop,Vibe,91,A Major,11B,7,8
+112,Stay The Night,"Zedd, Hayley Williams",Pop,Vibe,128,Ab Major,4B,6,8
+113,My Love,"Major Lazer, Wizkid, Wale, Dua Lipa",Pop,Vibe,115,G Major,9B,7,8
+114,Fading Out,CYDEN,Pop,Chill,130,C Minor,5A,4,5
+115,I Can Fvcking Tell,SAINt JHN,Pop,Chill,98,Bb Major,6B,3,4
+116,We Found Love,"Twin, Rachel Perry, Deep Mage",Pop,Chill,118,Ab Major,4B,4,5
+117,Save Your Tears,Boyce Avenue,Pop,Chill,116,G# Minor,1A,4,6
+118,Forever,"Jessie Reyez, 6LACK",Pop,Chill,114,D Minor,7A,3,6
+119,GO,"Kid Laroi, Juice WRLD",Pop,Chill,74,F# Major,2B,5,7
+120,Guitar,Pink Sweat$,Pop,Chill,90,D Major,10B,4,7
+121,The Light,Juice WRLD,Pop,Chill,170,A# Minor,3A,4,5
+122,In The Mood,"THEY., Yung Bleu",Pop,Chill,88,E Minor,9A,3,4
+123,Skin and Bones,070 Shake,Pop,Chill,116,C Major,8B,4,6
+124,Danger to My Heart,Edreeszy,Pop,Chill,170,B Minor,10A,3,5
+125,Ghost,Justin Bieber,Pop,Chill,154,D Major,10B,3,7
+126,OceanEyes,Luusif,Pop,Chill,155,F Minor,4A,3,7
+127,BIRDS OF A FEATHER,Billie Eilish,Pop,Chill,105,D Major,10B,4,8
+128,Espresso,Sabrina Carpenter,Pop,Chill,104,C Major,8B,4,7
+129,I See Fire,Ed Sheeran,Pop,Chill,76,A# Minor,3A,4,5
+130,Physical,Dua Lipa,Pop,Workout,147,C Major,8B,9,8
+131,See You Again,Miley Cyrus,Pop,Workout,139,A Minor,8A,8,8
+132,S&M,Rihanna,Pop,Workout,128,C# Major,3B,8,8
+133,Judas,Lady Gaga,Pop,Workout,131,A# Minor,3A,9,7
+134,Last Friday Night (T.G.I.F),Katy Perry,Pop,Workout,126,D# Minor,2A,8,9
+135,Danza Kuduro,"Don Omar, Lucenzo",Pop,Workout,130,C Major,8B,9,9
+136,Antisocial,"Ed Sheeran, Travis Scott",Pop,Workout,152,F Minor,4A,8,5
+137,The Middle,"Zedd, Maren Morris, Grey",Pop,Workout,107,G Major,9B,8,9
+138,Timber,"Pitbull, Kesha",Pop,Workout,130,B Major,1B,9,8
+139,Locked out of Heaven,Bruno Mars,Pop,Workout,144,F Major,7B,8,8
+140,Genius,"Sia, Diplo, Labrinth, LSD",Pop,Workout,159,B Minor,10A,7,7
+141,Love Yourself,Academy Killer,Pop,Workout,104,C Major,8B,8,7
+142,Feel It Still,Portugal. The Man,Pop,Workout,158,C# Major,3B,9,8
+143,Despacito - Remix,"Luis Fonsi, Daddy Yankee, Justin Bieber",Pop,Workout,178,D Major,10B,9,9
+144,Still into You,Paramore,Pop,Workout,136,F Major,7B,8,8
+145,Bad Romance,Lady Gaga,Pop,Workout,119,C Major,8B,8,6

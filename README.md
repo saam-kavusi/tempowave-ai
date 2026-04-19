@@ -1,229 +1,87 @@
-# 🎵 Music Recommender Simulation
+# TempoWave AI: An AI DJ for Harmonic Playlist Generation
 
-## Project Summary
+## Title and Summary
+TempoWave AI is an applied AI system that generates ordered playlists from a local music dataset using harmonic compatibility, BPM flow, energy/valence sequencing, and mood-specific rules. Instead of only recommending songs independently, it builds a complete no-repeat playlist designed to flow smoothly from one track to the next.
 
-In this project you will build and explain a small music recommender system.
+This project extends my earlier CodePath Module 3 project, **Music Recommender Simulation**. The original project focused on loading songs from a CSV file and ranking individual tracks based on user preferences such as genre, mood, and related music features. Its main goal was to simulate a recommendation engine for matching songs, while TempoWave AI expands that idea into full playlist construction and transition planning.
 
-Your goal is to:
+This project matters because playlist quality depends not only on what songs are chosen, but also on how they are sequenced. TempoWave AI approaches that problem as a structured AI task by combining constrained filtering, scoring logic, explainable transitions, and exportable results into one end-to-end system.
 
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
+## Architecture Overview
+TempoWave AI is organized as a modular pipeline that moves from user input to filtering, sequencing, explanation, and output. The system begins by loading a local CSV dataset, validating the request, and filtering songs by exact genre and exact mood so that playlist generation stays tightly constrained and consistent.
 
-Replace this paragraph with your own summary of what your version does.
+After filtering, the core AI logic selects the first song and then repeatedly scores the remaining candidates using Camelot compatibility, BPM closeness, energy, and valence. The system chooses the best next song, adds it to the playlist, and repeats this process until the requested number of songs has been reached.
 
----
+Once the playlist is complete, TempoWave AI generates transition explanations and exports the final result to CSV. The architecture also includes guardrails to safely handle invalid requests or insufficient candidate pools, making the overall system easier to trust and reproduce.
 
-## How The System Works
+![TempoWave AI System Architecture](assets/system_architecture.png)
 
-Explain your design in plain language.
+## Setup Instructions
+To run TempoWave AI, first clone the repository and enter the project folder. The project is designed to be lightweight and reproducible, using a local CSV dataset instead of requiring external APIs or authentication.
 
-Some prompts to answer:
+Create a virtual environment, activate it, and install the dependencies listed in `requirements.txt`. After setup, the main entry point can be run directly from the terminal, and the same environment can also be used to run the test suite and evaluation script.
 
-- The features each song in my system will use are: 
-1) mood
-2) energy
-3) genre
-4) acousticness
-5) tempo_bpm
-6) danceability
-7) valence
-8) artist
-9) title
-- My `UserProfile` stores:
-1) preferred_mood
-2) preferred_energy
-3) preferred_genre
-4) preferred_acousticness
-5) preferred_tempo_bpm
-6) preferred_danceability
-7) preferred_valence
-8) favorite_artists
-- The `Recommender` computes a score by comparing each songs features to the users preferences. It gives the most weight to mood, then energy, then slightly lower weights to genre, acousticness, and tempo. Lower-priority features like danceability and valence help refine the score. Songs that match the users preferred vibe more closely receive higher total scores, and the highest-scoring songs are recommended first. This is based on my own listening preference. 
-- To choose which song to recommend we:
-1) Compare each song to the UserProfile
-2) Give each song a total score
-3) Sort songs from highest score to lowest
-4) Recommend the top songs
-
----
-
-## Getting Started
-
-### Setup
-
-1. Create a virtual environment (optional but recommended):
-
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate      # Mac or Linux
-   .venv\Scripts\activate         # Windows
-
-2. Install dependencies
+This setup is intentionally simple so that another developer, recruiter, or instructor can run the project without guessing what to install or configure. Keeping the system local also makes it easier to demonstrate reliably in a portfolio setting.
 
 ```bash
+git clone https://github.com/saam-kavusi/tempowave-ai.git
+cd tempowave-ai
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+python main.py
+python -m pytest
+python evaluation/run_eval.py
+
 ```
 
-3. Run the app:
+## Sample Interactions
+TempoWave AI accepts three inputs: Genre, Mood, and Number of Songs. The system then filters the dataset, checks that enough matching songs exist, builds an ordered playlist, explains key transitions, and exports the result.
 
-```bash
-python -m src.main
-```
+The examples below are included to show how the system behaves across different playlist styles. These runs demonstrate that the same core pipeline can produce different sequencing behavior depending on whether the user selects Workout, Chill, or Vibe.
 
-### Running Tests
+Example 1
 
-Run the starter tests with:
+Input
 
-```bash
-pytest
-```
+Genre: Rap
+Mood: Workout
+Number of Songs: 5
 
-You can add more tests in `tests/test_recommender.py`.
+Output
 
----
+[Add final generated playlist here]
+[Add 1–2 transition explanations here]
+Example 2
 
-## Experiments You Tried
+Input
 
-Use this section to document the experiments you ran. For example:
+Genre: EDM
+Mood: Chill
+Number of Songs: 10
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+Output
 
----
+[Add final generated playlist here]
+[Add 1–2 transition explanations here]
+Example 3
 
-## Limitations and Risks
+Input
 
-Summarize some limitations of your recommender.
+Genre: Pop
+Mood: Vibe
+Number of Songs: 15
 
-Examples:
+Output
 
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
+[Add final generated playlist here]
+[Add 1–2 transition explanations here]
 
-You will go deeper on this in your model card.
+## Design Decisions
+TempoWave AI was designed to stay focused, reproducible, and realistic by using a local CSV dataset instead of relying on external APIs or streaming integrations. I chose curated music features such as BPM, Camelot key, energy, and valence so the system could produce musically informed playlist sequencing while remaining explainable and manageable within project scope.
 
----
+## Testing Summary
+TempoWave AI includes guardrails, unit tests, and an evaluation script to verify that the system behaves reliably across different inputs. The testing focuses on core behaviors such as exact filtering, request validation, harmonic compatibility logic, no-repeat playlist construction, and safe handling of insufficient-song cases.
 
 ## Reflection
-
-Read and complete `model_card.md`:
-
-[**Model Card**](model_card.md)
-
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
-
-
----
-
-## 7. `model_card_template.md`
-
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
-
-```markdown
-# 🎧 Model Card - Music Recommender Simulation
-
-## 1. Model Name
-
-Give your recommender a name, for example:
-
-> VibeFinder 1.0
-
----
-
-## 2. Intended Use
-
-- What is this system trying to do
-- Who is it for
-
-Example:
-
-> This model suggests 3 to 5 songs from a small catalog based on a user's preferred genre, mood, and energy level. It is for classroom exploration only, not for real users.
-
----
-
-## 3. How It Works (Short Explanation)
-
-Describe your scoring logic in plain language.
-
-- What features of each song does it consider
-- What information about the user does it use
-- How does it turn those into a number
-
-Try to avoid code in this section, treat it like an explanation to a non programmer.
-
----
-
-## 4. Data
-
-Describe your dataset.
-
-- How many songs are in `data/songs.csv`
-- Did you add or remove any songs
-- What kinds of genres or moods are represented
-- Whose taste does this data mostly reflect
-
----
-
-## 5. Strengths
-
-Where does your recommender work well
-
-You can think about:
-- Situations where the top results "felt right"
-- Particular user profiles it served well
-- Simplicity or transparency benefits
-
----
-
-## 6. Limitations and Bias
-
-Where does your recommender struggle
-
-Some prompts:
-- Does it ignore some genres or moods
-- Does it treat all users as if they have the same taste shape
-- Is it biased toward high energy or one genre by default
-- How could this be unfair if used in a real product
-
----
-
-## 7. Evaluation
-
-How did you check your system
-
-Examples:
-- You tried multiple user profiles and wrote down whether the results matched your expectations
-- You compared your simulation to what a real app like Spotify or YouTube tends to recommend
-- You wrote tests for your scoring logic
-
-You do not need a numeric metric, but if you used one, explain what it measures.
-
----
-
-## 8. Future Work
-
-If you had more time, how would you improve this recommender
-
-Examples:
-
-- Add support for multiple users and "group vibe" recommendations
-- Balance diversity of songs instead of always picking the closest match
-- Use more features, like tempo ranges or lyric themes
-
----
-
-## 9. Personal Reflection
-
-A few sentences about what you learned:
-
-- What surprised you about how your system behaved
-- How did building this change how you think about real music recommenders
-- Where do you think human judgment still matters, even if the model seems "smart"
-
+This project taught me how to turn a simpler recommendation prototype into a more complete applied AI system with clearer structure, stronger constraints, and more explainable outputs. It also reinforced the importance of balancing ambition with practicality by building something specialized, testable, and polished enough to present professionally in a portfolio.
