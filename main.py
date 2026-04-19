@@ -175,10 +175,9 @@ def run(
     print(f"\n{bar}")
     print(f"  TempoWave AI  |  {genre}  ·  {mood}  ·  {count} songs")
     print(bar)
-    for i, (song, score, _) in enumerate(playlist, start=1):
-        score_tag = "[open]" if i == 1 else f"[{score:.3f}]"
-        print(f"  {i:2d}. {score_tag:8s}  {song.title} — {song.artist}")
-        print(f"            BPM {song.bpm:.0f}  |  key {song.camelot_key}"
+    for i, (song, _, _) in enumerate(playlist, start=1):
+        print(f"  {i:2d}.  {song.title} — {song.artist}")
+        print(f"        BPM {song.bpm:.0f}  |  key {song.camelot_key}"
               f"  |  energy {song.energy}  |  valence {song.valence}")
 
     # Transition explanations
