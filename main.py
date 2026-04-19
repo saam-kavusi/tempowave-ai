@@ -12,7 +12,6 @@ Usage (arguments):
 """
 
 import argparse
-import sys
 
 from src.config import DATA_PATH, VALID_GENRES, VALID_MOODS, VALID_COUNTS
 from src.data_loader import load_songs
@@ -23,33 +22,100 @@ from src.explainer import explain_playlist
 from src.exporter import export_playlist
 
 
+# ── Normalization maps ─────────────────────────────────────────────
+# Strip + lowercase the user input, then look up the canonical form.
+# This avoids .title() producing "Edm" instead of "EDM".
+
+GENRE_MAP = {
+    "rap": "Rap",
+    "edm": "EDM",
+    "pop": "Pop",
+}
+
+MOOD_MAP = {
+    "workout": "Workout",
+    "chill":   "Chill",
+    "vibe":    "Vibe",
+}
+
+
+# ── Argument-type helpers (used by argparse --genre / --mood) ──────
+
+def _normalize_genre(value: str) -> str:
+    """Normalize genre from CLI flag; raises ArgumentTypeError if invalid."""
+    normalized = GENRE_MAP.get(value.strip().lower())
+    if normalized is None:
+        raise argparse.ArgumentTypeError(
+            f"'{value}' is not valid. Choose from: {', '.join(VALID_GENRES)}"
+        )
+    return normalized
+
+
+def _normalize_mood(value: str) -> str:
+    """Normalize mood from CLI flag; raises ArgumentTypeError if invalid."""
+    normalized = MOOD_MAP.get(value.strip().lower())
+    if normalized is None:
+        raise argparse.ArgumentTypeError(
+            f"'{value}' is not valid. Choose from: {', '.join(VALID_MOODS)}"
+        )
+    return normalized
+
+
 # ── Argument parsing ───────────────────────────────────────────────
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="TempoWave AI Playlist Generator")
-    parser.add_argument("--genre",    choices=VALID_GENRES,      help="Music genre")
-    parser.add_argument("--mood",     choices=VALID_MOODS,       help="Playlist mood")
-    parser.add_argument("--count",    type=int, choices=VALID_COUNTS, help="Number of songs")
-    parser.add_argument("--verbose",  action="store_true", help="Show step-by-step planning")
-    parser.add_argument("--no-export", action="store_true", help="Skip CSV export")
+    parser.add_argument("--genre",     type=_normalize_genre,          help="Music genre")
+    parser.add_argument("--mood",      type=_normalize_mood,           help="Playlist mood")
+    parser.add_argument("--count",     type=int, choices=VALID_COUNTS, help="Number of songs")
+    parser.add_argument("--verbose",   action="store_true",            help="Show step-by-step planning")
+    parser.add_argument("--no-export", action="store_true",            help="Skip CSV export")
     return parser.parse_args()
 
 
+# ── Interactive prompt ─────────────────────────────────────────────
+
 def _prompt_user() -> tuple[str, str, int]:
-    """Interactive mode: prompt for genre, mood, and count."""
+    """
+    Interactive mode: re-prompt each field until a valid value is entered.
+    Genre is locked in before mood is asked; mood is locked in before count.
+    Never calls sys.exit — bad input just loops.
+    """
     print("\n=== TempoWave AI ===")
-    print(f"Available genres : {', '.join(VALID_GENRES)}")
-    genre = input("Genre           : ").strip()
 
-    print(f"Available moods  : {', '.join(VALID_MOODS)}")
-    mood = input("Mood            : ").strip()
+    # ── Genre loop ────────────────────────────────────────────────
+    genre: str | None = None
+    while genre is None:
+        print(f"Available genres : {', '.join(VALID_GENRES)}")
+        raw = input("Genre           : ").strip()
+        genre = GENRE_MAP.get(raw.lower())
+        if genre is None:
+            print(f"  ✗ '{raw}' is not valid. Choose from: {', '.join(VALID_GENRES)}")
 
-    print(f"Song counts      : {VALID_COUNTS}")
-    try:
-        count = int(input("Number of songs : ").strip())
-    except ValueError:
-        print("[ERROR] Count must be a number.")
-        sys.exit(1)
+    # ── Mood loop ─────────────────────────────────────────────────
+    mood: str | None = None
+    while mood is None:
+        print(f"Available moods  : {', '.join(VALID_MOODS)}")
+        raw = input("Mood            : ").strip()
+        mood = MOOD_MAP.get(raw.lower())
+        if mood is None:
+            print(f"  ✗ '{raw}' is not valid. Choose from: {', '.join(VALID_MOODS)}")
+
+    # ── Count loop ────────────────────────────────────────────────
+    count_choices_str = ", ".join(str(c) for c in VALID_COUNTS)
+    count: int | None = None
+    while count is None:
+        print(f"Song counts      : {VALID_COUNTS}")
+        raw = input("Number of songs : ").strip()
+        try:
+            parsed = int(raw)
+        except ValueError:
+            print(f"  ✗ '{raw}' is not valid. Choose from: {count_choices_str}")
+            continue
+        if parsed in VALID_COUNTS:
+            count = parsed
+        else:
+            print(f"  ✗ '{raw}' is not valid. Choose from: {count_choices_str}")
 
     return genre, mood, count
 
