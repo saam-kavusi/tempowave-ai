@@ -21,67 +21,165 @@ To run TempoWave AI, first clone the repository and enter the project folder. Th
 
 Create a virtual environment, activate it, and install the dependencies listed in `requirements.txt`. After setup, the main entry point can be run directly from the terminal, and the same environment can also be used to run the test suite and evaluation script.
 
-This setup is intentionally simple so that another developer, recruiter, or instructor can run the project without guessing what to install or configure. Keeping the system local also makes it easier to demonstrate reliably in a portfolio setting.
+This setup is intentionally simple so that another developer, recruiter, or instructor can run the project without guessing what to install or configure. Keeping the system local also makes it easier to demonstrate reliably in a portfolio setting. The only required dependency is `pytest` — the core system uses only the Python standard library.
 
 ```bash
 git clone https://github.com/saam-kavusi/tempowave-ai.git
 cd tempowave-ai
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python main.py
-python -m pytest
-python evaluation/run_eval.py
-
+python3 main.py
+python3 -m pytest tests/ -v
+python3 evaluation/run_eval.py
 ```
 
 ## Sample Interactions
-TempoWave AI accepts three inputs: Genre, Mood, and Number of Songs. The system then filters the dataset, checks that enough matching songs exist, builds an ordered playlist, explains key transitions, and exports the result.
+TempoWave AI accepts three inputs: **Genre**, **Mood**, and **Number of Songs**. Genre and mood are accepted case-insensitively (e.g. `rap`, `Rap`, and `RAP` all work). Valid song counts are **5**, **10**, or **15**. The system then filters the dataset, checks that enough matching songs exist, builds an ordered playlist, explains key transitions, and exports the result.
 
-The examples below are included to show how the system behaves across different playlist styles. These runs demonstrate that the same core pipeline can produce different sequencing behavior depending on whether the user selects Workout, Chill, or Vibe.
+The examples below show how the same system produces different sequencing behavior depending on the playlist style.
 
-Example 1
+### Example 1
+**Input**
+- Genre: EDM
+- Mood: Chill
+- Number of Songs: 5
 
-Input
+**Output**
+==========================================================
+  TempoWave AI  |  EDM  ·  Chill  ·  5 songs
+==========================================================
+   1. [open]    red — ANDREWBATES
+            BPM 120  |  key 4A  |  energy 3.0  |  valence 4.0
+   2. [0.553]   Chill — Slushii
+            BPM 124  |  key 11B  |  energy 4.0  |  valence 5.0
+   3. [0.823]   Hide & Seek - Tiesto Remix — Imogen Heap, Tiesto
+            BPM 130  |  key 11A  |  energy 5.0  |  valence 6.0
+   4. [0.843]   ten — Fred Again...,Jozzy
+            BPM 128  |  key 10A  |  energy 4.0  |  valence 5.0
+   5. [0.985]   No Place - Will Clarke Remix — RUFUS DU SOL, Will Clarke
+            BPM 125  |  key 10A  |  energy 4.0  |  valence 5.0
 
-Genre: Rap
-Mood: Workout
-Number of Songs: 5
+==========================================================
+  TRANSITION EXPLANATIONS
+==========================================================
+  [ 1] "red" — ANDREWBATES  (opening track)
+       Energy: 3  BPM: 120  Key: 4A
+  [ 2] "Chill" — Slushii
+       Key:    4A → 11B  (best option available)
+       BPM:    120 ↑ 124  (diff 4)
+       Energy: 3 ↑ 4
+       Valence:4 ↑ 5
 
-Output
+### Example 2
+**Input**
+- Genre: Rap
+- Mood: Workout
+- Number of Songs: 10
 
-[Add final generated playlist here]
-[Add 1–2 transition explanations here]
-Example 2
+**Output**
+=== TempoWave AI ===
+Available genres : Rap, EDM, Pop
+Genre           : rap
+Available moods  : Workout, Vibe, Chill
+Mood            : workout
+Song counts      : [5, 10, 15]
+Number of songs : 5
 
-Input
+==========================================================
+  TempoWave AI  |  Rap  ·  Workout  ·  5 songs
+==========================================================
+   1. [open]    Till I Collapse — Eminem
+            BPM 171  |  key 3B  |  energy 9.0  |  valence 4.0
+   2. [0.824]   Lucky You — Eminem, Joyner Lucas
+            BPM 153  |  key 3A  |  energy 9.0  |  valence 5.0
+   3. [0.872]   Ni**as In Paris — JAY-Z, Kanye West
+            BPM 140  |  key 3B  |  energy 9.0  |  valence 5.0
+   4. [0.846]   Roll in Peace — Kodak Black, XXXTENTACION
+            BPM 140  |  key 3A  |  energy 8.0  |  valence 4.0
+   5. [0.854]   Standard — Stormzy
+            BPM 140  |  key 11B  |  energy 8.0  |  valence 5.0
 
-Genre: EDM
-Mood: Chill
-Number of Songs: 10
+==========================================================
+  TRANSITION EXPLANATIONS
+==========================================================
+  [ 1] "Till I Collapse" — Eminem  (opening track)
+       Energy: 9  BPM: 171  Key: 3B
+  [ 2] "Lucky You" — Eminem, Joyner Lucas
+       Key:    3B → 3A  (harmonically compatible)
+       BPM:    171 ↓ 153  (diff 18)
+       Energy: 9 → 9
+       Valence:4 ↑ 5
 
-Output
+### Example 3
+**Input**
+- Genre: Pop
+- Mood: Vibe
+- Number of Songs: 15
 
-[Add final generated playlist here]
-[Add 1–2 transition explanations here]
-Example 3
+**Output**
+==========================================================
+  TempoWave AI  |  Pop  ·  Vibe  ·  15 songs
+==========================================================
+   1. [open]    MEMORIES! — 347aidan
+            BPM 155  |  key 11B  |  energy 6.0  |  valence 7.0
+   2. [0.776]   Broken — THEY., Jessie Reyez
+            BPM 132  |  key 11B  |  energy 5.0  |  valence 5.0
+   3. [0.749]   Cliche — MGK
+            BPM 105  |  key 10B  |  energy 5.0  |  valence 6.0
+   4. [0.805]   Into You — Ariana Grande
+            BPM 108  |  key 11B  |  energy 7.0  |  valence 8.0
+   5. [0.894]   Replay — Iyaz
+            BPM 91  |  key 11B  |  energy 7.0  |  valence 8.0
+   6. [0.915]   A Bar Song (Tipsy) — Shaboozey
+            BPM 81  |  key 11B  |  energy 7.0  |  valence 9.0
+   7. [0.615]   My Love — Major Lazer, Wizkid, Wale, Dua Lipa
+            BPM 115  |  key 9B  |  energy 7.0  |  valence 8.0
+   8. [0.699]   She Doesn't Mind — Sean Paul
+            BPM 120  |  key 6A  |  energy 7.0  |  valence 8.0
+   9. [0.832]   Desert Rose — Sting, Cheb Mami
+            BPM 112  |  key 5A  |  energy 6.0  |  valence 7.0
+  10. [0.711]   Waiting for Tonight — Jennifer Lopez
+            BPM 125  |  key 3A  |  energy 7.0  |  valence 8.0
+  11. [0.699]   Maps — Maroon 5
+            BPM 120  |  key 12A  |  energy 7.0  |  valence 8.0
+  12. [0.814]   2002 — Anne- Marie
+            BPM 96  |  key 12A  |  energy 6.0  |  valence 8.0
+  13. [0.530]   Stay The Night — Zedd, Hayley Williams
+            BPM 128  |  key 4B  |  energy 6.0  |  valence 8.0
+  14. [0.740]   California — Anthony Russo
+            BPM 142  |  key 6B  |  energy 6.0  |  valence 7.0
+  15. [0.670]   Don't Blame Me — Taylor Swift
+            BPM 136  |  key 8A  |  energy 6.0  |  valence 6.0
 
-Input
-
-Genre: Pop
-Mood: Vibe
-Number of Songs: 15
-
-Output
-
-[Add final generated playlist here]
-[Add 1–2 transition explanations here]
+==========================================================
+  TRANSITION EXPLANATIONS
+==========================================================
+  [ 1] "MEMORIES!" — 347aidan  (opening track)
+       Energy: 6  BPM: 155  Key: 11B
+  [ 2] "Broken" — THEY., Jessie Reyez
+       Key:    11B → 11B  (perfect key match)
+       BPM:    155 ↓ 132  (diff 23)
+       Energy: 6 ↓ 5
+       Valence:7 ↓ 5
 
 ## Design Decisions
 TempoWave AI was designed to stay focused, reproducible, and realistic by using a local CSV dataset instead of relying on external APIs or streaming integrations. I chose curated music features such as BPM, Camelot key, energy, and valence so the system could produce musically informed playlist sequencing while remaining explainable and manageable within project scope.
 
+Another key design choice was to emphasize constrained playlist construction over broad personalization. This kept the system aligned with the project’s goals by making the output easier to test, explain, and evaluate while still demonstrating meaningful applied AI behavior.
+
 ## Testing Summary
 TempoWave AI includes guardrails, unit tests, and an evaluation script to verify that the system behaves reliably across different inputs. The testing focuses on core behaviors such as exact filtering, request validation, harmonic compatibility logic, no-repeat playlist construction, and safe handling of insufficient-song cases.
 
+The automated test suite now contains **78 tests**, and all **78 pass**. These tests cover filtering, guardrails, harmonic compatibility, playlist planning, and the newer interactive input-handling behavior such as case-insensitive genre/mood input and re-prompting on invalid genre, mood, or song count entries.
+
+In addition to the unit tests, the evaluation script successfully runs 3 demo playlist cases and 3 guardrail failure cases, confirming that invalid genre, mood, and count inputs are blocked with clear error messages. This testing process showed that the system does more than produce plausible outputs — it behaves consistently under both normal and invalid input conditions, which makes it easier to explain, trust, and demonstrate professionally.
+
+## Loom Walkthrough
+https://www.loom.com/share/e9d683ab6bbf4647b46ac50161b91f19
+
+
 ## Reflection
 This project taught me how to turn a simpler recommendation prototype into a more complete applied AI system with clearer structure, stronger constraints, and more explainable outputs. It also reinforced the importance of balancing ambition with practicality by building something specialized, testable, and polished enough to present professionally in a portfolio.
+
+It also changed the way I think about recommendation systems by showing that sequence and transition quality can matter just as much as matching individual items to user preferences.

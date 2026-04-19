@@ -15,6 +15,9 @@ flowchart TD
     M[Export playlist to CSV]
     N[Display final playlist output]
 
+    T[Tests / Evaluation Script]
+    U[Human Review of playlist quality and transitions]
+
     A --> C
     B --> D
     C --> D
@@ -29,4 +32,9 @@ flowchart TD
     K -- Yes --> L
     L --> M
     M --> N
+
+    T -. checks .-> D
+    T -. checks .-> H
+    T -. checks .-> N
+    U -. reviews .-> N
 ```

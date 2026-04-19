@@ -3,12 +3,14 @@
 TempoWave AI — CLI entry point.
 
 Usage (interactive):
-    python main.py
+    python3 main.py
 
-Usage (arguments):
-    python main.py --genre Rap   --mood Workout --count 10
-    python main.py --genre EDM   --mood Chill   --count 5  --verbose
-    python main.py --genre Pop   --mood Vibe    --count 15 --no-export
+Usage (flags):
+    python3 main.py --genre Rap   --mood Workout --count 10
+    python3 main.py --genre EDM   --mood Chill   --count 5  --verbose
+    python3 main.py --genre Pop   --mood Vibe    --count 15 --no-export
+
+Genre and mood inputs are case-insensitive in both modes.
 """
 
 import argparse
@@ -141,7 +143,6 @@ def run(
       6. Display tracklist + transition explanations
       7. Export to CSV (optional)
     """
-
     # 1. Load
     all_songs = load_songs(DATA_PATH)
     if verbose:
@@ -200,7 +201,7 @@ def run(
 def main() -> None:
     args = _parse_args()
 
-    if args.genre and args.mood and args.count:
+    if args.genre is not None and args.mood is not None and args.count is not None:
         genre, mood, count = args.genre, args.mood, args.count
     else:
         genre, mood, count = _prompt_user()
