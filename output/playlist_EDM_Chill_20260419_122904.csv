@@ -1,6 +1,0 @@
-position,song_id,title,artist,genre,mood_tag,bpm,musical_key,camelot_key,energy,valence,transition_score,reason
-1,67,red,ANDREWBATES,EDM,Chill,120.0,F Minor,4A,3.0,4.0,1.0000,opening track — mood energy anchor
-2,68,Chill,Slushii,EDM,Chill,124.0,A Major,11B,4.0,5.0,0.5533,"matching tempo, smooth energy flow"
-3,74,Hide & Seek - Tiesto Remix,"Imogen Heap, Tiesto",EDM,Chill,130.0,F# Minor,11A,5.0,6.0,0.8233,"compatible key, close tempo, smooth energy flow"
-4,65,ten,"Fred Again...,Jozzy",EDM,Chill,128.0,B Minor,10A,4.0,5.0,0.8433,"compatible key, matching tempo, smooth energy flow"
-5,78,No Place - Will Clarke Remix,"RUFUS DU SOL, Will Clarke",EDM,Chill,125.0,B Minor,10A,4.0,5.0,0.9850,"same key, matching tempo, smooth energy flow"
