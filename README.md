@@ -49,15 +49,15 @@ The examples below show how the same system produces different sequencing behavi
 ==========================================================
   TempoWave AI  |  EDM  ·  Chill  ·  5 songs
 ==========================================================
-   1. [open]    red — ANDREWBATES
+   1. red — ANDREWBATES
             BPM 120  |  key 4A  |  energy 3.0  |  valence 4.0
-   2. [0.553]   Chill — Slushii
+   2. Chill — Slushii
             BPM 124  |  key 11B  |  energy 4.0  |  valence 5.0
-   3. [0.823]   Hide & Seek - Tiesto Remix — Imogen Heap, Tiesto
+   3. Hide & Seek - Tiesto Remix — Imogen Heap, Tiesto
             BPM 130  |  key 11A  |  energy 5.0  |  valence 6.0
-   4. [0.843]   ten — Fred Again...,Jozzy
+   4. ten — Fred Again...,Jozzy
             BPM 128  |  key 10A  |  energy 4.0  |  valence 5.0
-   5. [0.985]   No Place - Will Clarke Remix — RUFUS DU SOL, Will Clarke
+   5. No Place - Will Clarke Remix — RUFUS DU SOL, Will Clarke
             BPM 125  |  key 10A  |  energy 4.0  |  valence 5.0
 
 ==========================================================
@@ -89,15 +89,15 @@ Number of songs : 5
 ==========================================================
   TempoWave AI  |  Rap  ·  Workout  ·  5 songs
 ==========================================================
-   1. [open]    Till I Collapse — Eminem
+   1. Till I Collapse — Eminem
             BPM 171  |  key 3B  |  energy 9.0  |  valence 4.0
-   2. [0.824]   Lucky You — Eminem, Joyner Lucas
+   2. Lucky You — Eminem, Joyner Lucas
             BPM 153  |  key 3A  |  energy 9.0  |  valence 5.0
-   3. [0.872]   Ni**as In Paris — JAY-Z, Kanye West
+   3. Ni**as In Paris — JAY-Z, Kanye West
             BPM 140  |  key 3B  |  energy 9.0  |  valence 5.0
-   4. [0.846]   Roll in Peace — Kodak Black, XXXTENTACION
+   4. Roll in Peace — Kodak Black, XXXTENTACION
             BPM 140  |  key 3A  |  energy 8.0  |  valence 4.0
-   5. [0.854]   Standard — Stormzy
+   5. Standard — Stormzy
             BPM 140  |  key 11B  |  energy 8.0  |  valence 5.0
 
 ==========================================================
@@ -121,35 +121,35 @@ Number of songs : 5
 ==========================================================
   TempoWave AI  |  Pop  ·  Vibe  ·  15 songs
 ==========================================================
-   1. [open]    MEMORIES! — 347aidan
+   1. MEMORIES! — 347aidan
             BPM 155  |  key 11B  |  energy 6.0  |  valence 7.0
-   2. [0.776]   Broken — THEY., Jessie Reyez
+   2. Broken — THEY., Jessie Reyez
             BPM 132  |  key 11B  |  energy 5.0  |  valence 5.0
-   3. [0.749]   Cliche — MGK
+   3. Cliche — MGK
             BPM 105  |  key 10B  |  energy 5.0  |  valence 6.0
-   4. [0.805]   Into You — Ariana Grande
+   4. Into You — Ariana Grande
             BPM 108  |  key 11B  |  energy 7.0  |  valence 8.0
-   5. [0.894]   Replay — Iyaz
+   5. Replay — Iyaz
             BPM 91  |  key 11B  |  energy 7.0  |  valence 8.0
-   6. [0.915]   A Bar Song (Tipsy) — Shaboozey
+   6. A Bar Song (Tipsy) — Shaboozey
             BPM 81  |  key 11B  |  energy 7.0  |  valence 9.0
-   7. [0.615]   My Love — Major Lazer, Wizkid, Wale, Dua Lipa
+   7. My Love — Major Lazer, Wizkid, Wale, Dua Lipa
             BPM 115  |  key 9B  |  energy 7.0  |  valence 8.0
-   8. [0.699]   She Doesn't Mind — Sean Paul
+   8. She Doesn't Mind — Sean Paul
             BPM 120  |  key 6A  |  energy 7.0  |  valence 8.0
-   9. [0.832]   Desert Rose — Sting, Cheb Mami
+   9. Desert Rose — Sting, Cheb Mami
             BPM 112  |  key 5A  |  energy 6.0  |  valence 7.0
-  10. [0.711]   Waiting for Tonight — Jennifer Lopez
+  10. Waiting for Tonight — Jennifer Lopez
             BPM 125  |  key 3A  |  energy 7.0  |  valence 8.0
-  11. [0.699]   Maps — Maroon 5
+  11. Maps — Maroon 5
             BPM 120  |  key 12A  |  energy 7.0  |  valence 8.0
-  12. [0.814]   2002 — Anne- Marie
+  12. 2002 — Anne- Marie
             BPM 96  |  key 12A  |  energy 6.0  |  valence 8.0
-  13. [0.530]   Stay The Night — Zedd, Hayley Williams
+  13. Stay The Night — Zedd, Hayley Williams
             BPM 128  |  key 4B  |  energy 6.0  |  valence 8.0
-  14. [0.740]   California — Anthony Russo
+  14. California — Anthony Russo
             BPM 142  |  key 6B  |  energy 6.0  |  valence 7.0
-  15. [0.670]   Don't Blame Me — Taylor Swift
+  15. Don't Blame Me — Taylor Swift
             BPM 136  |  key 8A  |  energy 6.0  |  valence 6.0
 
 ==========================================================
